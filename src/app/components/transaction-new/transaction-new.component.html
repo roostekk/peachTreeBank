@@ -1,0 +1,15 @@
+<div class="transaction">
+  <div class="transaction__header">
+    <img src="assets/icons/arrows.png" alt="arrows">
+    <p>Make a Transfer</p>
+  </div>
+  <ng-container *ngIf="!showSummary">
+    <app-transaction-form [balance]="balance"
+                          (formSubmit)="onFormSubmitting($event)"></app-transaction-form>
+  </ng-container>
+  <ng-container *ngIf="showSummary">
+    <app-transaction-summary [balance]=balance
+                             [transaction]="transaction"
+                             (transferMade)="onTransferIsMade($event)"></app-transaction-summary>
+  </ng-container>
+</div>

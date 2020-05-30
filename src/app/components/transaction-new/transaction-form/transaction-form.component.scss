@@ -1,0 +1,59 @@
+@import "../../../../styles/abstracts/variables";
+
+.transaction {
+  &__form {
+    background-color: $color-light;
+    padding: 48px 18px;
+  }
+
+  &__input {
+    margin-bottom: 36px;
+    position: relative;
+
+    label {
+      color: $color-dark;
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    input, .input-from {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid $color-gray;
+      padding: 4px 0;
+      color: $color-gray;
+      font-weight: 300;
+      font-size: 14px;
+    }
+  }
+
+  &__errors {
+    position: absolute;
+    bottom: -10px;
+    color: $color-alert;
+    font-size: 10px;
+    font-weight: 300;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      border: 0;
+      background-color: $color-orange;
+      color: $color-light;
+      font-weight: 300;
+      text-transform: uppercase;
+      padding: 12px 48px;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: .5;
+      }
+    }
+  }
+}

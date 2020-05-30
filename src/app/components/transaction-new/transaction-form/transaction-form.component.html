@@ -1,0 +1,27 @@
+<form class="transaction__form" [formGroup]="transferForm" (ngSubmit)="submit()">
+  <div class="transaction__input">
+    <label>From account</label>
+    <div class="input-from">Free Checking(4692) - ${{balance}}</div>
+  </div>
+  <div class="transaction__input">
+    <label for="to">To account</label>
+    <input type="text" id="to" formControlName="to" autocomplete="off">
+    <div class="transaction__errors">
+      <div *ngIf="transferForm.get('to').hasError('required') && !transferForm.get('to').pristine">Please provide an
+        account name.
+      </div>
+    </div>
+  </div>
+  <div class="transaction__input">
+    <label for="amount">Amount</label>
+    <input type="text" id="amount" formControlName="amount" autocomplete="off">
+    <div class="transaction__errors" *ngIf="!transferForm.get('amount').pristine">
+      <div *ngIf="transferForm.get('amount').hasError('required')">Please provide an amount.</div>
+      <div *ngIf="transferForm.get('amount').hasError('pattern')">Please provide a valid amount.</div>
+      <div *ngIf="transferForm.get('amount').hasError('max')">Amount exceeds your current balance and limit.</div>
+    </div>
+  </div>
+  <div class="transaction__button">
+    <button [disabled]="!transferForm.valid">Submit</button>
+  </div>
+</form>

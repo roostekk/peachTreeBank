@@ -1,0 +1,24 @@
+<div class="transactions__filters">
+  <div class="transactions__search">
+    <input type="text" placeholder="Search by typing..." [(ngModel)]="filters.searchTerm" (input)="emitFilters()">
+    <img src="assets/icons/close.png" alt="close" *ngIf="filters.searchTerm" (click)="searchReset()">
+  </div>
+  <div class="transactions__sort-box">
+    <span>Sort by</span>
+    <div class="transactions__sort" [class.active]="filters.activeSort === 'transactionDate'"
+         [class.asc]="filters.sort.transactionDate.asc"
+         (click)="sort('transactionDate')">
+      <span>Date</span>
+    </div>
+    <div class="transactions__sort" [class.active]="filters.activeSort === 'merchant'"
+         [class.asc]="filters.sort.merchant.asc"
+         (click)="sort('merchant')">
+      <span>Beneficiary</span>
+    </div>
+    <div class="transactions__sort" [class.active]="filters.activeSort === 'amount'"
+         [class.asc]="filters.sort.amount.asc"
+         (click)="sort('amount')">
+      <span>Amount</span>
+    </div>
+  </div>
+</div>

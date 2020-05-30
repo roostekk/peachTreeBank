@@ -1,0 +1,29 @@
+@import "abstracts/variables";
+
+.transaction {
+  margin-bottom: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    background-color: $color-blue;
+    position: relative;
+    padding: 10px 0;
+
+    p {
+      color: $color-light;
+      font-weight: 300;
+    }
+
+    img {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @media screen and (max-width: $tablet) {
+       left: 12px;
+      }
+    }
+  }
+}

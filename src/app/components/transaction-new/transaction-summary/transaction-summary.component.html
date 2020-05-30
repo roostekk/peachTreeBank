@@ -1,0 +1,21 @@
+<div class="transaction__summary">
+  <div class="transaction__input">
+    <label>From account</label>
+    <div class="input-from">Free Checking(4692)</div>
+  </div>
+  <div class="transaction__input">
+    <label>Balance before transaction</label>
+    <div class="input-from">${{balance}}</div>
+  </div>
+  <div class="transaction__input">
+    <label>To account</label>
+    <div class="input-from">{{transaction.merchant}}</div>
+  </div>
+  <div class="transaction__input">
+    <label>Amount</label>
+    <div class="input-from">${{transaction.amount}}</div>
+  </div>
+  <div class="transaction__button">
+    <button (click)="makeTransfer()">Transfer</button>
+  </div>
+</div>

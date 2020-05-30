@@ -1,0 +1,28 @@
+<div class="transactions">
+  <div class="transactions__header">
+    <img src="assets/icons/briefcase.png" alt="Briefcase">
+    <p>Recent Transactions</p>
+  </div>
+  <app-transactions-filters (filtersChange)="onFiltersChange($event)"></app-transactions-filters>
+  <div class="transactions__list" *ngIf="(transactions$ | async) as transactions">
+    <div class="transactions__item"
+         *ngFor="let transaction of transactions | transactionFilter: filters.searchTerm : filters.activeSort : filters.sort[filters.activeSort].asc"
+         [ngStyle]="{'border-left': '5px solid' + transaction.categoryCode}">
+      <div class="transactions__date"><span>{{transaction.transactionDate | date: 'MMM. d'}}</span></div>
+      <div class="transactions__merchant-logo">
+        <img *ngIf="transaction.merchantLogo" src="{{transaction.merchantLogo}}" alt="{{transaction.merchant}}">
+      </div>
+      <div class="transactions__merchant">
+        <div class="transactions__merchant-name">
+          <span>{{transaction.merchant}}</span>
+        </div>
+        <div class="transactions__type">
+          <span>{{transaction.transactionType}}</span>
+        </div>
+      </div>
+      <div class="transactions__amount">
+        <span>-${{transaction.amount}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+@import 'abstracts/variables';
+
+.transactions {
+  background-color: $color-light;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    background-color: $color-blue;
+    position: relative;
+    padding: 20px 0;
+
+    p {
+      color: $color-light;
+      font-weight: 300;
+    }
+
+    img {
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__list {
+    padding: 24px;
+    min-height: 810px;
+
+    @media screen and (max-width: $mobile) {
+      padding-top: 0;
+    }
+  }
+
+  &__item {
+    border: 1px solid $color-gray;
+    border-bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+
+    &:last-child {
+      border-bottom: 1px solid $color-gray
+    }
+  }
+
+  &__date {
+    font-weight: 300;
+    margin: 0 12px;
+    width: 65px;
+
+    @media screen and (max-width: $mobile) {
+      width: 40px;
+    }
+  }
+
+  &__merchant-logo {
+    width: 48px;
+    margin: 0 12px;
+
+    @media screen and (max-width: $mobile) {
+      margin-left: 0;
+    }
+
+    img {
+      width: 100%;
+      filter: grayscale(100);
+    }
+  }
+
+  &__merchant {
+    text-transform: capitalize;
+
+    @media screen and (max-width: $mobile) {
+      width: 100px;
+    }
+  }
+
+  &__type {
+    font-weight: 300;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  &__amount {
+    margin-left: auto;
+    font-weight: 500;
+    padding-right: 12px;
+
+    @media screen and (max-width: $mobile) {
+      padding-left: 6px;
+    }
+  }
+}
