@@ -26,6 +26,13 @@ describe('TransactionFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should fix the amount to 2 decimals', () => {
+    const amount = 200;
+    component.transferForm.get('amount').setValue(amount);
+    component.convertToFixed();
+    expect(component.transferForm.get('amount').value).toEqual(amount.toFixed(2));
+  });
+
   it('should emit transaction', () => {
     const transaction = new Transaction('100', 'John Doe');
     spyOn(component.formSubmit, 'emit');

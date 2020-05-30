@@ -14,11 +14,11 @@
   </div>
   <div class="transaction__input">
     <label for="amount">Amount</label>
-    <input type="text" id="amount" formControlName="amount" autocomplete="off">
+    <input type="text" id="amount" formControlName="amount" autocomplete="off" (change)="convertToFixed()">
     <div class="transaction__errors" *ngIf="!transferForm.get('amount').pristine">
       <div *ngIf="transferForm.get('amount').hasError('required')">Please provide an amount.</div>
       <div *ngIf="transferForm.get('amount').hasError('pattern')">Please provide a valid amount.</div>
-      <div *ngIf="transferForm.get('amount').hasError('max')">Amount exceeds your current balance and limit.</div>
+      <div *ngIf="transferForm.get('amount').hasError('max') && !transferForm.get('amount').hasError('pattern')">Amount exceeds your current balance and limit.</div>
     </div>
   </div>
   <div class="transaction__button">

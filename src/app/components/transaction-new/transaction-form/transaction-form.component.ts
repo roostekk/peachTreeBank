@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Transaction} from "../../../core/models/transaction.model";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Transaction} from '../../../core/models/transaction.model';
 
 @Component({
   selector: 'app-transaction-form',
@@ -13,18 +13,24 @@ export class TransactionFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<Transaction> = new EventEmitter<Transaction>();
 
   transferForm: FormGroup;
+
   constructor(
     private _formBuilder: FormBuilder
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.transferForm = this._formBuilder.group({
       to: ['', Validators.required],
-      amount: ['', [Validators.required, Validators.pattern('^(?=.*[0-9])[-0-9]+$'), Validators.max(this.balance + 500)]]
-    })
+      amount: ['', [Validators.required, Validators.pattern('[0-9]+(\.[0-9][0-9]?)?'), Validators.max(this.balance + 500)]]
+    });
+  }
+
+  convertToFixed(): void {
+    this.transferForm.get('amount').setValue(Number(this.transferForm.get('amount').value).toFixed(2));
   }
 
   submit(): void {
-    this.formSubmit.emit(new Transaction(this.transferForm.value.amount, this.transferForm.value.to))
+    this.formSubmit.emit(new Transaction(this.transferForm.value.amount, this.transferForm.value.to));
   }
 }
