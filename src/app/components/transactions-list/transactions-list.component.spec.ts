@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TransactionsListComponent} from './transactions-list.component';
-import {TransactionFilterPipe} from "../../core/pipes/transaction-filter.pipe";
-import {Filter} from "../../core/models/transaction-filter.model";
+import {TransactionFilterPipe} from '../../core/pipes/transaction-filter.pipe';
+import {Filter} from '../../core/models/transaction-filter.model';
 
 describe('TransactionsListComponent', () => {
   let component: TransactionsListComponent;

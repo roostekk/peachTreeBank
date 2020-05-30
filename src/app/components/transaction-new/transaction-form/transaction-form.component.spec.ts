@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TransactionFormComponent} from './transaction-form.component';
-import {Transaction} from "../../../core/models/transaction.model";
-import {FormBuilder} from "@angular/forms";
+import {Transaction} from '../../../core/models/transaction.model';
+import {FormBuilder} from '@angular/forms';
 
 describe('TransactionFormComponent', () => {
   let component: TransactionFormComponent;

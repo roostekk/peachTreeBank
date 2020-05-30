@@ -15,12 +15,12 @@ export class TransactionFormComponent implements OnInit {
   transferForm: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder
+    private formBuilder: FormBuilder
   ) {
   }
 
   ngOnInit(): void {
-    this.transferForm = this._formBuilder.group({
+    this.transferForm = this.formBuilder.group({
       to: ['', Validators.required],
       amount: ['', [Validators.required, Validators.pattern('[0-9]+(\.[0-9][0-9]?)?'), Validators.max(this.balance + 500)]]
     });

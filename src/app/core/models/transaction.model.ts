@@ -11,7 +11,7 @@ export class Transaction {
     this.merchant = merchant;
     this.merchantLogo = merchantLogo || '';
     this.transactionType = 'Online Transfer';
-    this.categoryCode = "#e25a2c";
+    this.categoryCode = '#e25a2c';
     this.transactionDate = new Date().getTime();
   }
 }

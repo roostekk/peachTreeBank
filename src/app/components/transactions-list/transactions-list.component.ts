@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
-import {Transaction} from "../../core/models/transaction.model";
-import {TransactionService} from "../../core/services/transaction.service";
-import {Filter} from "../../core/models/transaction-filter.model";
+import {Observable} from 'rxjs';
+import {Transaction} from '../../core/models/transaction.model';
+import {TransactionService} from '../../core/services/transaction.service';
+import {Filter} from '../../core/models/transaction-filter.model';
 
 @Component({
   selector: 'app-transactions-list',
@@ -15,16 +15,16 @@ export class TransactionsListComponent implements OnInit {
   filters: Filter;
 
   constructor(
-    private _transactionService: TransactionService
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit(): void {
     this.filters = new Filter();
-    this.transactions$ = this._transactionService.transaction$;
+    this.transactions$ = this.transactionService.transaction$;
   }
 
   onFiltersChange(e): void {
     this.filters = e;
-    console.log(this.filters)
+    console.log(this.filters);
   }
 }

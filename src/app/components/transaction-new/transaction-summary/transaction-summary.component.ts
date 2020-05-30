@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Transaction} from "../../../core/models/transaction.model";
-import {TransactionService} from "../../../core/services/transaction.service";
+import {Transaction} from '../../../core/models/transaction.model';
+import {TransactionService} from '../../../core/services/transaction.service';
 
 @Component({
   selector: 'app-transaction-summary',
@@ -14,14 +14,14 @@ export class TransactionSummaryComponent implements OnInit {
   @Output() transferMade: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
-    private _transactionService: TransactionService
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit(): void {
   }
 
   makeTransfer(): void {
-    this._transactionService.addTransaction(this.transaction);
+    this.transactionService.addTransaction(this.transaction);
     this.transferMade.emit(this.transaction.amount);
   }
 }

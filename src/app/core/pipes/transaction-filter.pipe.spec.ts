@@ -1,5 +1,5 @@
 import { TransactionFilterPipe } from './transaction-filter.pipe';
-import {Transactions} from "../constants/transactions";
+import {Transactions} from '../constants/transactions';
 
 describe('TransactionFilterPipe', () => {
   const pipe = new TransactionFilterPipe();
@@ -19,21 +19,25 @@ describe('TransactionFilterPipe', () => {
 
   it('should return transaction filtered by search term', () => {
     const searchTerm = 'custom';
-    expect(pipe.transform(transactions, searchTerm, null, false)).toEqual(transactions.filter(el => el.merchant.toLowerCase().includes(searchTerm.toLowerCase())));
+    expect(pipe.transform(transactions, searchTerm, null, false))
+      .toEqual(transactions.filter(el => el.merchant.toLowerCase().includes(searchTerm.toLowerCase())));
   });
 
   it('should return sorted transactions', () => {
     const searchTerm = '';
     let activeSort: 'transactionDate' | 'merchant' | 'amount' = 'transactionDate';
 
-    function sort(transactions, searchTerm, activeSort, isAsc) {
-      return transactions
-        .filter(el => el.merchant.toLowerCase().includes(searchTerm.toLowerCase()))
+    function sort(mockTransactions, mockSearchTerm, mockActiveSort, isAsc) {
+      return mockTransactions
+        .filter(el => el.merchant.toLowerCase().includes(mockSearchTerm.toLowerCase()))
         .sort((a, b) => {
-          if (activeSort === 'amount' ? +a[activeSort] > +b[activeSort] : a[activeSort] > b[activeSort]) {
-            return isAsc ? 1 : -1
-          } else {
-            return isAsc ? -1 : 1
+          switch (mockActiveSort) {
+            case 'amount':
+              return +a[mockActiveSort] > +b[mockActiveSort] ? (isAsc ? 1 : -1) : (isAsc ? -1 : 1);
+            case 'merchant':
+              return a[mockActiveSort].toLowerCase() > b[mockActiveSort].toLowerCase() ? (isAsc ? 1 : -1) : (isAsc ? -1 : 1);
+            case 'transactionDate':
+              return a[mockActiveSort] > b[mockActiveSort] ? (isAsc ? 1 : -1) : (isAsc ? -1 : 1);
           }
         });
     }
@@ -41,6 +45,10 @@ describe('TransactionFilterPipe', () => {
     expect(pipe.transform(transactions, searchTerm, activeSort, false)).toEqual(sort(transactions, searchTerm, activeSort, false));
 
     activeSort = 'amount';
+    expect(pipe.transform(transactions, searchTerm, activeSort, true)).toEqual(sort(transactions, searchTerm, activeSort, true));
+    expect(pipe.transform(transactions, searchTerm, activeSort, false)).toEqual(sort(transactions, searchTerm, activeSort, false));
+
+    activeSort = 'merchant';
     expect(pipe.transform(transactions, searchTerm, activeSort, true)).toEqual(sort(transactions, searchTerm, activeSort, true));
     expect(pipe.transform(transactions, searchTerm, activeSort, false)).toEqual(sort(transactions, searchTerm, activeSort, false));
   });

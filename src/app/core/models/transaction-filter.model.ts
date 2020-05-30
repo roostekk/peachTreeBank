@@ -1,5 +1,5 @@
 export class Filter {
-  searchTerm: string
+  searchTerm: string;
   activeSort: 'transactionDate' | 'merchant' | 'amount';
   sort: {[key: string]: {asc: boolean}};
 
@@ -16,7 +16,7 @@ export class Filter {
       amount: {
         asc: false
       }
-    }
+    };
   }
 
 }

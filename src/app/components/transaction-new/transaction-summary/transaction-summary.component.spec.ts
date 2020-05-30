@@ -1,8 +1,8 @@
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import {TransactionSummaryComponent} from './transaction-summary.component';
-import {Transaction} from "../../../core/models/transaction.model";
-import {TransactionService} from "../../../core/services/transaction.service";
+import {Transaction} from '../../../core/models/transaction.model';
+import {TransactionService} from '../../../core/services/transaction.service';
 
 describe('TransactionSummaryComponent', () => {
   let component: TransactionSummaryComponent;
@@ -20,7 +20,7 @@ describe('TransactionSummaryComponent', () => {
     fixture = TestBed.createComponent(TransactionSummaryComponent);
     component = fixture.componentInstance;
     component.balance = 100;
-    component.transaction = new Transaction('100', 'John Doe')
+    component.transaction = new Transaction('100', 'John Doe');
     fixture.detectChanges();
   });
 

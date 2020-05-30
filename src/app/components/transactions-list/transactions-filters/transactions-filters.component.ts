@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Filter} from "../../../core/models/transaction-filter.model";
+import {Filter} from '../../../core/models/transaction-filter.model';
 
 @Component({
   selector: 'app-transactions-filters',

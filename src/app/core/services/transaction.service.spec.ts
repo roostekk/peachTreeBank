@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { TransactionService } from './transaction.service';
-import {Transaction} from "../models/transaction.model";
+import {Transaction} from '../models/transaction.model';
 
 describe('TransactionService', () => {
   const transactions = [new Transaction('100', 'John Doe')];
@@ -22,7 +22,7 @@ describe('TransactionService', () => {
    service.addTransaction(newTransaction);
 
    service.transaction$.subscribe(res => {
-     expect(res).toEqual([newTransaction, ...transactions])
-   })
+     expect(res).toEqual([newTransaction, ...transactions]);
+   });
   }));
 });

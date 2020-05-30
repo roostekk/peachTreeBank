@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TransactionNewComponent} from './transaction-new.component';
-import {Transaction} from "../../core/models/transaction.model";
+import {Transaction} from '../../core/models/transaction.model';
 
 describe('TransactionNewComponent', () => {
   let component: TransactionNewComponent;
