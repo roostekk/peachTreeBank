@@ -10,6 +10,7 @@
   <ng-container *ngIf="showSummary">
     <app-transaction-summary [balance]=balance
                              [transaction]="transaction"
-                             (transferMade)="onTransferIsMade($event)"></app-transaction-summary>
+                             (transferMade)="onTransferIsMade($event)"
+                             (transferCanceled)="onTransferCancellation()"></app-transaction-summary>
   </ng-container>
 </div>

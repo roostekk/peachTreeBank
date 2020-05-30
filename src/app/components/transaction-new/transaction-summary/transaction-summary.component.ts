@@ -12,6 +12,7 @@ export class TransactionSummaryComponent implements OnInit {
   @Input() transaction: Transaction;
   @Input() balance: number;
   @Output() transferMade: EventEmitter<string> = new EventEmitter<string>();
+  @Output() transferCanceled: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private transactionService: TransactionService
@@ -23,5 +24,9 @@ export class TransactionSummaryComponent implements OnInit {
   makeTransfer(): void {
     this.transactionService.addTransaction(this.transaction);
     this.transferMade.emit(this.transaction.amount);
+  }
+
+  gobBack(): void {
+    this.transferCanceled.emit();
   }
 }

@@ -27,4 +27,8 @@ export class TransactionNewComponent implements OnInit {
     this.balance -= e;
   }
 
+  onTransferCancellation(): void {
+    this.showSummary = false;
+  }
+
 }

@@ -27,7 +27,8 @@ export class TransactionFormComponent implements OnInit {
   }
 
   convertToFixed(): void {
-    this.transferForm.get('amount').setValue(Number(this.transferForm.get('amount').value).toFixed(2));
+    const amount = this.transferForm.get('amount').value;
+    this.transferForm.get('amount').setValue(Number(amount.toString().replace(',', '.')).toFixed(2));
   }
 
   submit(): void {

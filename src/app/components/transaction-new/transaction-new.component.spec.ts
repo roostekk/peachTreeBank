@@ -37,4 +37,9 @@ describe('TransactionNewComponent', () => {
     expect(component.showSummary).toBe(false);
     expect(component.balance).toEqual(balance - Number(transaction.amount));
   });
+
+  it('should cancel the transfer and hide the summary', () => {
+    component.onTransferCancellation();
+    expect(component.showSummary).toBe(false);
+  });
 });

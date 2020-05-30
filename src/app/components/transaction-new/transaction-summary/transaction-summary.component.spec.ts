@@ -36,4 +36,11 @@ describe('TransactionSummaryComponent', () => {
     expect(service.addTransaction).toHaveBeenCalled();
     expect(component.transferMade.emit).toHaveBeenCalled();
   }));
+
+  it('should emit transfer cancellation', () => {
+    spyOn(component.transferCanceled, 'emit');
+    component.gobBack();
+    fixture.detectChanges();
+    expect(component.transferCanceled.emit).toHaveBeenCalled();
+  });
 });
